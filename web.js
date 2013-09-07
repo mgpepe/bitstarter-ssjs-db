@@ -13,10 +13,36 @@ app.set('view engine', 'ejs');
 app.set('port', process.env.PORT || 8080);
 
 // Render homepage (note trailing slash): example.com/
+
+//app.get('/', function(request, response) {
+//  var data = fs.readFileSync('index.html').toString();
+//  response.send(data);
+//});
+
+
+
+// Render index
 app.get('/', function(request, response) {
-  var data = fs.readFileSync('index.html').toString();
-  response.send(data);
+var target_date = new Date("October 9, 2013 23:59:59");
+var today_date = new Date();
+var date_difference = Math.round(Math.abs(target_date.getTime()-today_date.getTime())/(1000*60*60*24));
+  global.db.Order.findAll().success(function(orders) {
+    var orders_json = [];
+	var total_amount = 0;
+	var target_amount = 10000;
+    orders.forEach(function(order) {
+      orders_json.push({id: order.coinbase_id, amount: order.amount, time: order.time});
+	total_amount+=order.amount;
+    });
+	var percentage_amount = Math.floor(total_amount/target_amount*100);
+    // Uses views/orders.ejs
+    response.render("index", {orders: orders_json, perc:percentage_amount, target: target_amount, total: total_amount, days_left:date_difference});
+  }).error(function(err) {
+    console.log(err);
+    response.send("error retrieving orders");
+  });
 });
+
 
 // Render example.com/orders
 app.get('/orders', function(request, response) {

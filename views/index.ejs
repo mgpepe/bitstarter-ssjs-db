@@ -186,17 +186,17 @@
                 different in horizontal and vertical layouts, illustrating
                 media queries. -->
                 <div class="linediv-l">
-                <h3>1000</h3> <p>backers</p>
+                <h3><%= orders.length %></h3> <p>backers</p>
                 </div>
               </div>
               <div class="span4">
                 <div class="linediv-c">
-                  <h3>$6000</h3> <p>of $10,000</p>
+                  <h3>$<%= total %></h3> <p>of $<%= target %></p>
                 </div>
               </div>
               <div class="span4">
                 <div class="linediv-r">
-                <h3>10</h3> <p>days left</p>
+                <h3><%= days_left %></h3> <p>days left</p>
                 </div>
               </div>
             </div>
@@ -206,8 +206,8 @@
             <!-- Bootstrap progress bar -->
             <!-- http://twitter.github.io/bootstrap/components.html#progress -->
             <div class="thermometer progress active">
-              <div class="bar bar-success" style="width: 60%;"></div>
-              <div class="bar bar-warning" style="width: 40%;"></div>
+              <div class="bar bar-success" style="width: <%= perc %>%;"></div>
+              <div class="bar bar-warning" style="width: <%= 100-perc %>%;"></div>
             </div>
           </div>
           </div>
@@ -310,7 +310,7 @@
 <div class="row-fluid tier-row">
 <div class="span3 offset3 tier" style="position:relative;">
 <a class="coinbase-button" data-button-text="0.01 btc" data-code="9f194436881f76415ac61f98e10b1694" data-button-style="custom_small" href="https://coinbase.com/checkouts/9f194436881f76415ac61f98e10b1694">Pay With Bitcoin</a><script src="https://coinbase.com/assets/button.js" type="text/javascript"></script>
-<div style="position:absolute;top:5px;left: 130px; "> <span style="font-size:20px">or</span><a href="https://twitter.com/share" class="twitter-share-button" data-text="This student project looks interesting." data-via="StartupMOOC" data-size="large" data-hashtags="StartupMOOC">Tweet</a></div>
+<div style="position:absolute;top:5px;left: 120px;width: 200px; "> <span style="font-size:16px">or</span> <a href="https://twitter.com/share" class="twitter-share-button" data-text="This student project looks interesting." data-via="StartupMOOC" data-size="large" data-hashtags="StartupMOOC">Tweet</a></div>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 </div>
 <div class="span6 reward">
