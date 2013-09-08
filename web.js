@@ -43,6 +43,10 @@ var date_difference = Math.round(Math.abs(target_date.getTime()-today_date.getTi
   });
 });
 
+// Report Card /report_card
+app.get('/report_card', function(request, response){
+	response.render('report_card');
+});
 
 // Render example.com/orders
 app.get('/orders', function(request, response) {
